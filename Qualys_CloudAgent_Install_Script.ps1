@@ -21,11 +21,6 @@ $ver = "1.0"
 
 ##Start of Script
 
-# Please Edit the Below
-$CustID = "Please enter the Customer ID"
-$ActiID = "Please enter the Activation ID"
-$WebURI = "Please enter the Web URI"
-
 # Enabling loggin for the script and saving to c:\windows\temp
 $ErrorActionPreference="SilentlyContinue"
 Stop-Transcript | out-null
@@ -39,6 +34,12 @@ Set-Location -Path $dir
 
 $Qualysinstalled = $false
 $Qualysproc = $false
+
+# Setting Variables
+$GetContents = Get-Content -Path ./activation.txt
+$CustID = $GetContents[0]
+$ActiID = $GetContents[1]
+$WebURI = $GetContents[2]
 
 $arguments = "CustomerId={" + $CustID + "} ActivationId={" + $ActiID + "} WebServiceUri=" + $WebURI
 
